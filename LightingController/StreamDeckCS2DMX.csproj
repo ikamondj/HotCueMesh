@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="2.2.1" />
+    <PackageReference Include="NAudio.Wasapi" Version="2.2.1" />
+    <PackageReference Include="NLog" Version="5.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="DmxUsbProCSharp">
+      <HintPath>..\enttek\DmxUsbProCSharp\Source\DmxUsbProCSharp\bin\Debug\netstandard2.0\DmxUsbProCSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="FTD2XX_NET">
+      <HintPath>..\enttek\DmxUsbProCSharp\Source\DmxUsbProCSharp\bin\Debug\netstandard2.0\FTD2XX_NET.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="FilterAssemblyInfoFiles" BeforeTargets="CoreCompile">
+    <ItemGroup>
+      <Compile Remove="obj/**/*.cs" />
+    </ItemGroup>
+  </Target>
+
+</Project>

@@ -1,19 +1,11 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/mydb
-    username: 
-    password: 
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:./data/app.db
 
   jpa:
     hibernate:
-      ddl-auto: update   # dev only; use validate + migrations in real envs
+      ddl-auto: update
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
-    open-in-view: false
-
-  sql:
-    init:
-      mode: never        # or always if you're using schema.sql/data.sql
+        dialect: org.hibernate.community.dialect.SQLiteDialect

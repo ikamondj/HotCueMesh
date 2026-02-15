@@ -9,6 +9,7 @@ set(hot_cue_mesh_SOURCES
     OBSReceiverPlugin/Plugin.cpp
     OBSReceiverPlugin/Channel.cpp
     OBSReceiverPlugin/ObsEvents.cpp
+    OBSReceiverPlugin/StateReader.cpp
 )
 
 add_library(HotCueMesh MODULE ${hot_cue_mesh_SOURCES})

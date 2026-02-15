@@ -13,9 +13,10 @@
 #include <thread>
 #include "Channel.hpp"
 #include "ObsEvents.hpp"
+#include "StateReader.hpp"
 
 OBS_DECLARE_MODULE()
-OBS_MODULE_USE_DEFAULT_LOCALE("hot-cue-mesh", "en-US")
+OBS_MODULE_USE_DEFAULT_LOCALE("HotCueMesh", "en-US")
 
 
 
@@ -55,7 +56,7 @@ static void tick_callback(void *param, float seconds)
 bool obs_module_load(void)
 {
     blog(LOG_INFO, "[hot-cue-mesh] module loaded");
-
+    start_state_reader_server();
     obs_add_tick_callback(tick_callback, nullptr);
 
     if (g_listener_thread.joinable()) {
@@ -235,6 +236,7 @@ bool obs_module_load(void)
 void obs_module_unload(void)
 {
     // Stop timer
+    stop_state_reader_server();
     obs_remove_tick_callback(tick_callback, nullptr);
 #ifdef _WIN32
     g_listener_stop.store(true, std::memory_order_release);

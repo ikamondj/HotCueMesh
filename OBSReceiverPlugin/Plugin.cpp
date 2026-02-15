@@ -48,7 +48,7 @@ static void tick_callback(void *param, float seconds)
 {
 	    std::string event;
     while (g_event_channel.pop(event)) {
-	on_hot_cue_event(event);
+	process_event(event);
     }
 }
 

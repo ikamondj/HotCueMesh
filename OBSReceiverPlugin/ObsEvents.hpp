@@ -2,4 +2,4 @@
 
 #include <string>
 
-void on_hot_cue_event(const std::string& event);
+void process_event(const std::string& event);

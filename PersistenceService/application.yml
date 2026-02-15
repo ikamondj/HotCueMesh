@@ -9,3 +9,5 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.community.dialect.SQLiteDialect
+server:
+  port: 8919

@@ -19,8 +19,8 @@ type ActionList struct {
 	Actions []TriggerAction `json:"actions"`
 }
 
-func standardNetPayload(act TriggerAction) ([]byte, error) {
-	al := ActionList{Actions: []TriggerAction{act}}
+func standardNetPayload(actions []TriggerAction) ([]byte, error) {
+	al := ActionList{Actions: actions}
 	return json.Marshal(al)
 }
 
@@ -80,13 +80,20 @@ func NewRouter(targets map[AppID]AppTarget) *Router {
 	}
 }
 
-func (r *Router) SendAction(ctx context.Context, act TriggerAction) error {
-	tgt, ok := r.Targets[act.AppId]
+func (r *Router) SendActions(ctx context.Context, actions []TriggerAction, appId AppID) error {
+	tgt, ok := r.Targets[appId]
 	if !ok {
-		return fmt.Errorf("no target configured for appId=%q", act.AppId)
+		return fmt.Errorf("no target configured for appId=%q", appId)
 	}
 
-	payload, err := standardNetPayload(act)
+	//assert all actions have the same AppId as appId
+	for _, action := range actions {
+		if action.AppId != appId {
+			return fmt.Errorf("action appId %q does not match target appId %q", action.AppId, appId)
+		}
+	}
+
+	payload, err := standardNetPayload(actions)
 	if err != nil {
 		return err
 	}
@@ -101,7 +108,7 @@ func (r *Router) SendAction(ctx context.Context, act TriggerAction) error {
 	case ProtoOSC:
 		return sendOSC(ctx, tgt, payload)
 	default:
-		return fmt.Errorf("unsupported protocol %q for appId=%q", tgt.Proto, act.AppId)
+		return fmt.Errorf("unsupported protocol %q for appId=%q", tgt.Proto, appId)
 	}
 }
 

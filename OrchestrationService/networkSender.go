@@ -19,9 +19,9 @@ type ActionList struct {
 	Actions []TriggerAction `json:"actions"`
 }
 
-func standardNetPayload(actions []TriggerAction) ([]byte, error) {
-	al := ActionList{Actions: actions}
-	return json.Marshal(al)
+func standardNetPayload(action TriggerAction) ([]byte, error) {
+	trig := action.OwningTrigger
+	return json.Marshal(trig)
 }
 
 type Protocol string

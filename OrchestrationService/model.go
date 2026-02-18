@@ -69,9 +69,10 @@ const (
 )
 
 type TriggerAction struct {
-	AppId      AppID              `json:"appId"`
-	ActionType ActionType         `json:"actionType"`
-	Args       map[ArgName]string `json:"args"`
+	AppId         AppID              `json:"appId"`
+	ActionType    ActionType         `json:"actionType"`
+	Args          map[ArgName]string `json:"args"`
+	OwningTrigger *Trigger           `json:"-"`
 }
 
 type HotcueEvent struct {

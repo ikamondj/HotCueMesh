@@ -20,7 +20,7 @@ type ActionList struct {
 }
 
 func standardNetPayload(action TriggerAction) ([]byte, error) {
-	trig := action.OwningTrigger
+	trig := *action.OwningTrigger
 	return json.Marshal(trig)
 }
 
@@ -80,20 +80,13 @@ func NewRouter(targets map[AppID]AppTarget) *Router {
 	}
 }
 
-func (r *Router) SendActions(ctx context.Context, actions []TriggerAction, appId AppID) error {
+func (r *Router) SendActions(ctx context.Context, action TriggerAction, appId AppID) error {
 	tgt, ok := r.Targets[appId]
 	if !ok {
 		return fmt.Errorf("no target configured for appId=%q", appId)
 	}
 
-	//assert all actions have the same AppId as appId
-	for _, action := range actions {
-		if action.AppId != appId {
-			return fmt.Errorf("action appId %q does not match target appId %q", action.AppId, appId)
-		}
-	}
-
-	payload, err := standardNetPayload(actions)
+	payload, err := standardNetPayload(action)
 	if err != nil {
 		return err
 	}

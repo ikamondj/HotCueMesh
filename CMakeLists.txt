@@ -4,6 +4,23 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
+include(FetchContent)
+
+
+FetchContent_Declare(
+  httplib
+  GIT_REPOSITORY https://github.com/yhirose/cpp-httplib.git
+  GIT_TAG v0.15.3
+)
+FetchContent_MakeAvailable(httplib)
+
+FetchContent_Declare(
+  nlohmann_json
+  GIT_REPOSITORY https://github.com/nlohmann/json.git
+  GIT_TAG v3.11.3
+)
+FetchContent_MakeAvailable(nlohmann_json)
+
 
 set(hot_cue_mesh_SOURCES
     OBSReceiverPlugin/Plugin.cpp
@@ -23,6 +40,8 @@ target_include_directories(HotCueMesh PRIVATE
 target_link_libraries(HotCueMesh
     PRIVATE
         libobs
+        httplib::httplib
+        nlohmann_json::nlohmann_json
 )
 
 # Ensure plugin loads correctly on each platform

@@ -11,3 +11,8 @@ spring:
         dialect: org.hibernate.community.dialect.SQLiteDialect
 server:
   port: 8919
+
+obs:
+  receiver:
+    port: 7779
+    url: http://localhost:{{obs.receiver.port}}/obsState

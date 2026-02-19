@@ -11,7 +11,7 @@ import com.ikamon.hotCueMesh.persistenceService.dto.TriggerDto;
 import com.ikamon.hotCueMesh.persistenceService.entity.Trigger;
 import com.ikamon.hotCueMesh.persistenceService.repository.ActionRepository;
 import com.ikamon.hotCueMesh.persistenceService.repository.TriggerRepository;
-
+import com.ikamon.hotCueMesh.persistenceService.service.OrchestratorService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -20,13 +20,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 @Controller
 public class MappingController {
 
-    public MappingController(@Autowired TriggerRepository triggerRepository, @Autowired ActionRepository actionRepository) {
+    public MappingController(	@Autowired TriggerRepository triggerRepository,
+				@Autowired ActionRepository actionRepository,
+				@Autowired OrchestratorService orchestratorService) {
         this.triggerRepository = triggerRepository;
         this.actionRepository = actionRepository;
+	this.orchestratorService = orchestratorService;
     }
 
     private final TriggerRepository triggerRepository;
     private final ActionRepository actionRepository;
+    private final OrchestratorService orchestratorService;
 
     @PostMapping("addTrigger")
     public String addTrigger(@RequestBody TriggerDto trigger) {
@@ -39,27 +43,31 @@ public class MappingController {
                 .enabled(true)
                 .build();
         triggerRepository.save(trEntry);
+        orchestratorService.update();
         return "Trigger added";
     }
 
     @PostMapping("addActionToTrigger")
     public String addActionToTrigger(@RequestBody ActionTriggerRequest req) {
 
+	orchestratorService.update();
         return "Action added to trigger";
     }
 
     @PostMapping("removeActionFromTrigger")
     public String removeActionFromTrigger(@RequestBody ActionTriggerRequest req) {
         //TODO: process POST request
-        
+
+	orchestratorService.update();
         return "Action removed from trigger";
     }
 
     @PostMapping("removeTrigger")
     public String removeTrigger(@RequestBody Trigger trigger) {
 
+	orchestratorService.update();
         return "Trigger removed";
     }
-    
-    
+
+
 }

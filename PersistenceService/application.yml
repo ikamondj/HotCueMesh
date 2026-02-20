@@ -16,3 +16,6 @@ obs:
   receiver:
     port: 7779
     url: http://localhost:{{obs.receiver.port}}/obsState
+orchestrator:
+  port: 8111
+  url: http://localhost:{{orchestrator.port}}/app-state

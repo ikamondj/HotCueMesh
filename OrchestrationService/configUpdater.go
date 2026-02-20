@@ -9,9 +9,8 @@ import (
 )
 
 const (
-	configUpdaterPath      = "/app-state"
-	maxConfigPayloadBytes  = 1 << 22 // 4MB
-	defaultConfigServerAdr = ":8080"
+	configUpdaterPath     = "/app-state"
+	maxConfigPayloadBytes = 1 << 22 // 4MB
 )
 
 func StartConfigUpdaterServer(appStateUpdates chan<- []Trigger, port string) *http.Server {

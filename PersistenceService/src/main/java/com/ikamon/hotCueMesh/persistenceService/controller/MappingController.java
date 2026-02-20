@@ -1,6 +1,9 @@
 package com.ikamon.hotCueMesh.persistenceService.controller;
 
+import java.util.Map.Entry;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,8 +15,12 @@ import com.ikamon.hotCueMesh.persistenceService.entity.Trigger;
 import com.ikamon.hotCueMesh.persistenceService.repository.ActionRepository;
 import com.ikamon.hotCueMesh.persistenceService.repository.TriggerRepository;
 import com.ikamon.hotCueMesh.persistenceService.service.OrchestratorService;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import com.ikamon.hotCueMesh.persistenceService.dto.ActionDto;
+import com.ikamon.hotCueMesh.persistenceService.dto.ConfigState;
 
 
 
@@ -73,6 +80,20 @@ public class MappingController {
 	orchestratorService.update();
         return "Trigger removed";
     }
+
+    @PostMapping("configState")
+    public ResponseEntity<String> postMethodName(@RequestBody ConfigState configState) {
+        //TODO: process POST request
+	triggerRepository.deleteAll();
+	actionRepository.deleteAll();
+	for (Entry<TriggerDto, ActionDto> entry : configState.getConfig().entrySet()) {
+		Trigger trigger = entry.getKey().toEntity();
+		triggerRepository.save(trigger);
+	}
+
+        return ResponseEntity.ok("Successfully updated mapping config!");
+    }
+
 
 
 }

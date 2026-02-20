@@ -3,6 +3,8 @@ import './App.css';
 import logo from './logo.svg';
 import TriggerItem from './components/TriggerItem';
 import ActionItem from './components/ActionItem';
+import { postJSON } from './api';
+import {config} from './config';
 
 const HOTCUE_TYPES = [
   'Hot_Cue',
@@ -79,6 +81,10 @@ const Panel = ({ title, cta, children }) => (
   </div>
 );
 
+function sendAppState(trigger) {
+
+}
+
 function App() {
   const [nextTriggerId, setNextTriggerId] = useState(1);
   const [nextActionId, setNextActionId] = useState(1);
@@ -88,6 +94,8 @@ function App() {
   const addTrigger = () => {
     setTriggers((previous) => [...previous, createTriggerDto(nextTriggerId)]);
     setNextTriggerId((previous) => previous + 1);
+
+
   };
 
   const updateTrigger = (id, patch) => {

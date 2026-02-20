@@ -1,4 +1,5 @@
 package com.ikamon.hotCueMesh.persistenceService.dto;
+import java.util.Collection;
 import java.util.List;
 
 import com.ikamon.hotCueMesh.persistenceService.constants.CueMatch;
@@ -8,9 +9,8 @@ import com.ikamon.hotCueMesh.persistenceService.entity.Action;
 import com.ikamon.hotCueMesh.persistenceService.entity.Trigger;
 
 import lombok.Builder;
-import lombok.Data;
-import lombok.Setter;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -40,5 +40,21 @@ public class TriggerDto {
 		}
 	}
 	return result;
+    }
+
+    public Trigger toEntity(Collection<ActionDto> actions) {
+	Trigger trigger = Trigger.builder()
+                .cueName(getCueName())
+                .cueColor(getCueColor())
+                .hotcueType(getHotcueIntEncoding())
+                .cueMatchType(getCueMatchType())
+                .enabled(true)
+                .build();
+	List<Action> actionEntities = new ArrayList<>();
+	for (ActionDto act : actions) {
+		actionEntities.add(act.toEntity());
+	}
+	trigger.setActions(actionEntities);
+	return trigger;
     }
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ikamon.hotCueMesh.persistenceService.constants.CueMatch;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -46,6 +47,15 @@ public class Trigger {
     @Column(nullable = false)
     private CueMatch cueMatchType;
 
-    @OneToMany(mappedBy = "trigger")
+    @OneToMany(mappedBy = "trigger", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Action> actions;
+
+    public void setActions(List<Action> actions) {
+	this.actions = actions;
+	if (actions != null) {
+	    for (Action a : actions) {
+		a.setTrigger(this);
+	    }
+	}
+    }
 }

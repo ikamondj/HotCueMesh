@@ -10,24 +10,23 @@ func main() {
 	go StartConfigUpdaterServer(appstateChannel, "8111")
 
 	eventsReceived := make(chan HotcueEvent, 0)
+	//TODO implement StartTCPEventListener in listener.go that listens for TCP HotCueEvents and pushes them onto a channel
 	go StartTCPEventListener(eventsReceived, "8112")
 
 	appstate := make([]Trigger, 0, 1024)
 
 	for {
-		select {
-		case trigs, ok := <-appstateChannel:
-			if ok {
-				clear(appstate)
-				appstate = trigs
-			}
+		trigs, ok := <-appstateChannel
+		if ok {
+			clear(appstate)
+			appstate = trigs
 		}
-		select {
-		case event, ok := <-eventsReceived:
-			if ok {
-				processHotcueEvent(event, appstate)
-			}
+
+		event, ok := <-eventsReceived
+		if ok {
+			ProcessHotcueEvent(event, appstate)
 		}
+
 	}
 
 }

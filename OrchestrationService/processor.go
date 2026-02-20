@@ -28,7 +28,7 @@ func skipEvent(event HotcueEvent, trigger Trigger) bool {
 		(trigger.CueMatchType == Embedded && !strings.Contains(event.CueName, trigger.CueName))
 }
 
-func processHotcueEvent(event HotcueEvent, mappings []Trigger) {
+func ProcessHotcueEvent(event HotcueEvent, mappings []Trigger) {
 	for _, trigger := range mappings {
 		if skipEvent(event, trigger) {
 			continue
@@ -48,10 +48,15 @@ func processHotcueEvent(event HotcueEvent, mappings []Trigger) {
 		}
 
 		if len(netActions) > 0 {
-			dest := netActions[0].AppId
-			err := router.SendActions(context.Background(), netActions, dest)
-			if err != nil {
-				fmt.Printf("Error sending actions to %s: %v\n", dest, err)
+			appSet := make(map[AppID]TriggerAction)
+			for _, netAction := range netActions {
+				appSet[netAction.AppId] = netAction
+			}
+			for dest, netAction := range appSet {
+				err := router.SendActions(context.Background(), netAction, dest)
+				if err != nil {
+					fmt.Printf("Error sending actions to %s: %v\n", dest, err)
+				}
 			}
 		}
 	}

@@ -1,5 +1,8 @@
 package com.ikamon.hotCueMesh.persistenceService.constants;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CueColor {
     public static int Invisible = 0x1;
     public static int DarkGrey = 0x2;
@@ -18,4 +21,13 @@ public class CueColor {
     public static int Purple = 0x4000;
     public static int Magenta = 0x8000;
     public static int all = 0xFFFF;
+    public static Map<Integer, Boolean> getCueColorMap(int cueColor) {
+	Map<Integer, Boolean> result = new HashMap<>();
+	for (int col = Invisible; col < Magenta + 1; col <<= 1) {
+		if ((cueColor & col) != 0) {
+			result.put(col, true);
+		}
+	}
+	return result;
+    }
 }

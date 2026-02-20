@@ -38,7 +38,7 @@ public class MappingController {
         Trigger trEntry = Trigger.builder()
                 .cueName(trigger.getCueName())
                 .cueColor(trigger.getCueColor())
-                .hotcueType(trigger.getHotcueType())
+                .hotcueType(trigger.getHotcueIntEncoding())
                 .cueMatchType(trigger.getCueMatchType())
                 .enabled(true)
                 .build();
@@ -49,7 +49,7 @@ public class MappingController {
 
     @PostMapping("addActionToTrigger")
     public String addActionToTrigger(@RequestBody ActionTriggerRequest req) {
-
+	//actionRepository.save(entity);
 	orchestratorService.update();
         return "Action added to trigger";
     }
@@ -63,8 +63,13 @@ public class MappingController {
     }
 
     @PostMapping("removeTrigger")
-    public String removeTrigger(@RequestBody Trigger trigger) {
-
+    public String removeTrigger(@RequestBody TriggerDto trigger) {
+	Trigger trig = triggerRepository.findByCueNameAndCueColorAndHotcueTypeAndCueMatchType(
+		trigger.getCueName(),
+		trigger.getCueColor(),
+		trigger.getHotcueIntEncoding(),
+		trigger.getCueMatchType().name());
+	triggerRepository.delete(trig);
 	orchestratorService.update();
         return "Trigger removed";
     }

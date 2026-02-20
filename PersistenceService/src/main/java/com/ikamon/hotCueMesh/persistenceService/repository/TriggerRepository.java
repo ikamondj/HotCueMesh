@@ -7,5 +7,5 @@ import com.ikamon.hotCueMesh.persistenceService.entity.Trigger;
 
 public interface TriggerRepository extends JpaRepository<Trigger, Long> {
     @Query("select t from Trigger t where t.cueName = :cueName and t.cueColor = :cueColor and t.hotcueType = :hotcueType and t.cueMatchType = :cueMatchType")
-    Trigger findByCueNameAndCueColorAndHotcueTypeAndCueMatchType(@Param("cueName") String cueName, @Param("cueColor") Integer cueColor, @Param("hotcueType") String hotcueType, @Param("cueMatchType") String cueMatchType);
+    Trigger findByCueNameAndCueColorAndHotcueTypeAndCueMatchType(@Param("cueName") String cueName, @Param("cueColor") Integer cueColor, @Param("hotcueType") Integer hotcueType, @Param("cueMatchType") String cueMatchType);
 }

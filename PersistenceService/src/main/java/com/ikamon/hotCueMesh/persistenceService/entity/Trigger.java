@@ -3,7 +3,6 @@ package com.ikamon.hotCueMesh.persistenceService.entity;
 import java.util.List;
 
 import com.ikamon.hotCueMesh.persistenceService.constants.CueMatch;
-import com.ikamon.hotCueMesh.persistenceService.constants.HotcueType;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,9 +27,8 @@ public class Trigger {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long triggerId;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = true)
-    private HotcueType hotcueType;
+    @Column(nullable = false)
+    private int hotcueType;
 
     @Column(nullable = false)
     private int cueColor; // <- was int
@@ -40,6 +38,9 @@ public class Trigger {
 
     @Column(nullable = false)
     private Boolean enabled;
+
+    @Column(nullable = false)
+    private int decks;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

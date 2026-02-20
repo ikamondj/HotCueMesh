@@ -1,6 +1,13 @@
 package com.ikamon.hotCueMesh.persistenceService.entity;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectReader;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.ikamon.hotCueMesh.persistenceService.constants.CueMatch;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +24,8 @@ import lombok.Setter;
 @Setter
 @Entity(name="ACTION")
 public class Action {
+    private static final ObjectReader ACTION_ARGS_READER =
+        JsonMapper.builder().build().readerFor(new TypeReference<HashMap<String, String>>() {});
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long actionId;
@@ -29,4 +38,14 @@ public class Action {
     private String actionType;
     @Column(nullable = false)
     private String actionArgs;
+    public Map<String, String> getActionArgsMap() {
+	if (actionArgs == null || actionArgs.isBlank()) {
+	    return new HashMap<>();
+	}
+	try {
+	    return ACTION_ARGS_READER.readValue(actionArgs);
+	} catch (Exception ignored) {
+	    return new HashMap<>();
+	}
+    }
 }

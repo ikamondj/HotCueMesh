@@ -1,5 +1,6 @@
 package com.ikamon.hotCueMesh.persistenceService.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,7 @@ public class MappingController {
     private final OrchestratorService orchestratorService;
 
     @PostMapping("configState")
-    public ResponseEntity<String> postMethodName(@RequestBody ConfigState configState) {
+    public ResponseEntity<String> postConfigState(@RequestBody ConfigState configState) {
         //TODO: process POST request
 	triggerRepository.deleteAll();
 	actionRepository.deleteAll();
@@ -59,19 +60,19 @@ public class MappingController {
     }
 
     @GetMapping("getConfigState")
-    public ResponseEntity<ConfigState> getMethodName() {
+    public ResponseEntity<ConfigState> getConfigState() {
 	ConfigState state = new ConfigState();
 	List<Trigger> triggers = triggerRepository.findAllWithActions();
 	Map<TriggerDto, List<ActionDto>> mapping = new HashMap<>();
 
 	for (Trigger t : triggers) {
+		ArrayList<ActionDto> actionDtos = new ArrayList<>();
 		for (Action a : t.getActions()) {
-
+			actionDtos.add(a.toDto());
 		}
+		mapping.put(t.toDto(), actionDtos);
 	}
 	state.setConfig(mapping);
-
-	//TODO pull from DB, convert entities to DTOs, structure correctly, and return
         return ResponseEntity.ok(state);
     }
 

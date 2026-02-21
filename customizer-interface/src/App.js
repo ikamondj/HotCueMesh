@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
 import './App.css';
 import logo from './logo.svg';
 import TriggerItem from './components/TriggerItem';
@@ -38,6 +39,181 @@ const CUE_COLORS = [
 ];
 
 const ALL_CUE_COLORS_MASK = CUE_COLORS.reduce((accumulator, color) => accumulator | color.value, 0);
+
+const isObject = (value) => value != null && typeof value === 'object' && !Array.isArray(value);
+
+const parseJsonObject = (value) => {
+  if (typeof value !== 'string') {
+    return null;
+  }
+
+  try {
+    const parsed = JSON.parse(value);
+    return isObject(parsed) ? parsed : null;
+  } catch {
+    return null;
+  }
+};
+
+const hasTriggerShape = (value) =>
+  isObject(value) &&
+  (
+    value.hotcueType !== undefined ||
+    value.hotcueTypes !== undefined ||
+    value.cueName !== undefined ||
+    value.cueColor !== undefined ||
+    value.cueMatchType !== undefined ||
+    value.enabled !== undefined ||
+    value.actions !== undefined
+  );
+
+const extractConfigEntries = (rawState) => {
+  const configState = isObject(rawState) && rawState.config !== undefined ? rawState.config : rawState;
+
+  if (Array.isArray(configState)) {
+    return configState.map((entry) => {
+      if (Array.isArray(entry)) {
+        return [entry[0], entry[1]];
+      }
+
+      if (isObject(entry)) {
+        if ('trigger' in entry) {
+          return [entry.trigger, entry.actions];
+        }
+
+        if ('key' in entry && 'value' in entry) {
+          return [entry.key, entry.value];
+        }
+
+        if ('actions' in entry) {
+          return [entry, entry.actions];
+        }
+
+        return [entry, []];
+      }
+
+      return [entry, []];
+    });
+  }
+
+  if (isObject(configState)) {
+    return Object.entries(configState).map(([key, value]) => {
+      if (isObject(value) && hasTriggerShape(value.trigger)) {
+        return [value.trigger, value.actions];
+      }
+
+      return [key, value];
+    });
+  }
+
+  return [];
+};
+
+const normalizeTriggerActions = (rawActions, nextActionIdRef) => {
+  if (!Array.isArray(rawActions)) {
+    return [];
+  }
+
+  return rawActions.map((rawAction) => {
+    const existingId = Number(rawAction?.id ?? rawAction?.actionId);
+    const actionId = Number.isInteger(existingId) && existingId > 0 ? existingId : nextActionIdRef.current;
+    const fallbackAction = createActionDto(actionId);
+
+    const parsedArgs =
+      typeof rawAction?.actionArgs === 'string'
+        ? parseJsonObject(rawAction.actionArgs) || {}
+        : isObject(rawAction?.actionArgs)
+          ? rawAction.actionArgs
+          : {};
+
+    const parsedLightingPreset = Number(
+      rawAction?.lightingPreset ?? parsedArgs.lightingPreset ?? parsedArgs.presetValue
+    );
+
+    nextActionIdRef.current = Math.max(nextActionIdRef.current + 1, actionId + 1);
+
+    return {
+      ...fallbackAction,
+      ...(isObject(rawAction) ? rawAction : {}),
+      id: actionId,
+      sourceName: rawAction?.sourceName ?? parsedArgs.sourceName ?? fallbackAction.sourceName,
+      filterName: rawAction?.filterName ?? parsedArgs.filterName ?? fallbackAction.filterName,
+      sceneName: rawAction?.sceneName ?? parsedArgs.sceneName ?? fallbackAction.sceneName,
+      targetHost: rawAction?.targetHost ?? parsedArgs.targetHost ?? fallbackAction.targetHost,
+      targetPort:
+        rawAction?.targetPort ??
+        parsedArgs.targetPort ??
+        parsedArgs.port ??
+        fallbackAction.targetPort,
+      endpointPath:
+        rawAction?.endpointPath ??
+        parsedArgs.endpointPath ??
+        parsedArgs.path ??
+        fallbackAction.endpointPath,
+      lightingPreset: Number.isFinite(parsedLightingPreset)
+        ? parsedLightingPreset
+        : fallbackAction.lightingPreset,
+      randomPresetList:
+        rawAction?.randomPresetList ??
+        parsedArgs.randomPresetList ??
+        parsedArgs.presetList ??
+        fallbackAction.randomPresetList
+    };
+  });
+};
+
+const normalizeTriggers = (rawState) => {
+  const entries = extractConfigEntries(rawState);
+  const nextActionIdRef = { current: 1 };
+  let nextTriggerId = 1;
+
+  const normalizedTriggers = entries.flatMap(([rawTrigger, rawActions]) => {
+    const parsedTrigger = parseJsonObject(rawTrigger);
+    const triggerSource =
+      hasTriggerShape(rawTrigger) ? rawTrigger : hasTriggerShape(parsedTrigger) ? parsedTrigger : null;
+
+    const normalizedActions = normalizeTriggerActions(
+      Array.isArray(rawActions) ? rawActions : rawActions?.actions,
+      nextActionIdRef
+    );
+
+    if (!triggerSource) {
+      return [];
+    }
+
+    const existingTriggerId = Number(triggerSource.id ?? triggerSource.triggerId);
+    const triggerId =
+      Number.isInteger(existingTriggerId) && existingTriggerId > 0 ? existingTriggerId : nextTriggerId;
+
+    const hotcueTypes = Array.isArray(triggerSource.hotcueTypes)
+      ? triggerSource.hotcueTypes
+      : Array.isArray(triggerSource.hotcueType)
+        ? triggerSource.hotcueType
+        : typeof triggerSource.hotcueType === 'string' && triggerSource.hotcueType.length > 0
+          ? [triggerSource.hotcueType]
+          : ['Hot_Cue'];
+
+    nextTriggerId = Math.max(nextTriggerId + 1, triggerId + 1);
+
+    return [
+      {
+        ...createTriggerDto(triggerId),
+        ...triggerSource,
+        id: triggerId,
+        hotcueTypes,
+        hotcueType: hotcueTypes[0] || 'Hot_Cue',
+        cueMatchType: triggerSource.cueMatchType || 'None',
+        actions: normalizedActions
+      }
+    ];
+  });
+
+  return {
+    triggers: normalizedTriggers,
+    nextTriggerId: Math.max(nextTriggerId, 1),
+    nextActionId: Math.max(nextActionIdRef.current, 1)
+  };
+};
 
 const createActionDto = (id) => ({
   id,
@@ -82,7 +258,7 @@ const Panel = ({ title, cta, children }) => (
 );
 
 function sendAppState(trigger) {
-
+	//TODO using sendJSON(),
 }
 
 function App() {
@@ -90,12 +266,58 @@ function App() {
   const [nextActionId, setNextActionId] = useState(1);
   const [triggers, setTriggers] = useState([]);
   const [selectedTriggerId, setSelectedTriggerId] = useState(null);
+  const hasLoadedInitialConfig = useRef(false);
+
+  useEffect(() => {
+    if (hasLoadedInitialConfig.current) {
+      return;
+    }
+    hasLoadedInitialConfig.current = true;
+
+    let isMounted = true;
+
+    const loadConfigState = async () => {
+      try {
+        const response = await fetch(`${config.persistenceServiceUrl}/getConfigState`, {
+          method: 'GET',
+          headers: { Accept: 'application/json' },
+          credentials: 'include'
+        });
+
+        if (!response.ok) {
+          return;
+        }
+
+        const rawState = await response.json();
+        const nextState = normalizeTriggers(rawState);
+
+        if (!isMounted) {
+          return;
+        }
+
+        setTriggers(nextState.triggers);
+        setNextTriggerId(nextState.nextTriggerId);
+        setNextActionId(nextState.nextActionId);
+        setSelectedTriggerId((previous) =>
+          nextState.triggers.some((trigger) => trigger.id === previous) ? previous : null
+        );
+      } catch {
+        // no-op: keep defaults when persistence service is unavailable
+      }
+    };
+
+    loadConfigState();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const addTrigger = () => {
     setTriggers((previous) => [...previous, createTriggerDto(nextTriggerId)]);
     setNextTriggerId((previous) => previous + 1);
 
-
+    postJSON(`${config.persistenceServiceUrl}/configState`)
   };
 
   const updateTrigger = (id, patch) => {

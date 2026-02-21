@@ -1,4 +1,5 @@
 package com.ikamon.hotCueMesh.persistenceService.dto;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -10,11 +11,12 @@ import com.ikamon.hotCueMesh.persistenceService.entity.Trigger;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@Builder
+@NoArgsConstructor
 public class TriggerDto {
     List<String> hotcueType;
     int cueColor;

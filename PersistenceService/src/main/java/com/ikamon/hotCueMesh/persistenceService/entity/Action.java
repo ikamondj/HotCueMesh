@@ -7,6 +7,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectReader;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.ikamon.hotCueMesh.persistenceService.constants.CueMatch;
+import com.ikamon.hotCueMesh.persistenceService.dto.ActionDto;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -47,5 +48,13 @@ public class Action {
 	} catch (Exception ignored) {
 	    return new HashMap<>();
 	}
+    }
+
+    public ActionDto toDto() {
+	ActionDto dto = new ActionDto();
+	dto.setActionArgs(actionArgs);
+	dto.setActionType(actionType);
+	dto.setAppId(appId);
+	return dto;
     }
 }

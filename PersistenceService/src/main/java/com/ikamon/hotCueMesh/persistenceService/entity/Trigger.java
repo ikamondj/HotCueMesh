@@ -1,8 +1,12 @@
 package com.ikamon.hotCueMesh.persistenceService.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ikamon.hotCueMesh.persistenceService.constants.CueMatch;
+import com.ikamon.hotCueMesh.persistenceService.constants.Decks;
+import com.ikamon.hotCueMesh.persistenceService.constants.HotcueType;
+import com.ikamon.hotCueMesh.persistenceService.dto.TriggerDto;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -57,5 +61,29 @@ public class Trigger {
 		a.setTrigger(this);
 	    }
 	}
+    }
+
+    public TriggerDto toDto() {
+	TriggerDto dto = new TriggerDto();
+	dto.setCueMatchType(this.cueMatchType);
+	dto.setCueColor(cueColor);
+	dto.setCueName(cueName);
+	dto.setEnabled(enabled);
+	List<Integer> deckList = new ArrayList<>();
+	for (int d : Decks.decks) {
+		if ((d & this.decks) != 0) {
+			deckList.add(d);
+		}
+	}
+	dto.setDecks(deckList);
+	List<String> hotCuetypeList = new ArrayList<>();
+	for (HotcueType type : HotcueType.values()) {
+		int v = type.getValue();
+		if ((v & hotcueType) != 0) {
+			hotCuetypeList.add(type.name());
+		}
+	}
+	dto.setHotcueType(hotCuetypeList);
+	return dto;
     }
 }

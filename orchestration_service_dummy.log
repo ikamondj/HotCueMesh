@@ -1,0 +1,176 @@
+2026-02-22 01:11:29,291 - INFO - Orchestration Service Dummy started on 0.0.0.0:8112
+2026-02-22 01:11:29,291 - INFO - Listening for incoming HotcueEvent messages...
+2026-02-22 17:36:36,680 - INFO - Orchestration Service Dummy started on 0.0.0.0:8112
+2026-02-22 17:36:36,680 - INFO - Listening for incoming HotcueEvent messages...
+2026-02-22 18:02:52,667 - INFO - Orchestration Service Dummy started on 0.0.0.0:8112
+2026-02-22 18:02:52,667 - INFO - Listening for incoming HotcueEvent messages...
+2026-02-22 18:24:05,805 - INFO - Orchestration Service Dummy started on 0.0.0.0:8112
+2026-02-22 18:24:05,805 - INFO - Listening for incoming HotcueEvent messages...
+2026-02-22 18:24:08,829 - INFO - Client connected from ('127.0.0.1', 27644)
+2026-02-22 18:24:08,829 - INFO - Received from ('127.0.0.1', 27644): {"master": {"cue": "master", "title": "Ready 2 Go"}}
+2026-02-22 18:24:08,829 - INFO - Client ('127.0.0.1', 27644) disconnected
+2026-02-22 18:24:08,829 - INFO - Connection with ('127.0.0.1', 27644) closed
+2026-02-22 18:24:30,841 - INFO - Client connected from ('127.0.0.1', 27667)
+2026-02-22 18:24:30,841 - INFO - Received from ('127.0.0.1', 27667): {"cues": [{"cue": "4", "deck": "1", "title": "Ready 2 Go"}]}
+2026-02-22 18:24:30,841 - INFO - Client ('127.0.0.1', 27667) disconnected
+2026-02-22 18:24:30,842 - INFO - Connection with ('127.0.0.1', 27667) closed
+2026-02-22 18:38:03,298 - INFO - Orchestration Service Dummy started on 0.0.0.0:8112
+2026-02-22 18:38:03,298 - INFO - Listening for incoming HotcueEvent messages...
+2026-02-22 18:38:15,785 - INFO - Client connected from ('127.0.0.1', 59279)
+2026-02-22 18:38:15,785 - INFO - Received from ('127.0.0.1', 59279): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 18:38:15,785 - INFO - Client ('127.0.0.1', 59279) disconnected
+2026-02-22 18:38:15,786 - INFO - Connection with ('127.0.0.1', 59279) closed
+2026-02-22 22:08:52,438 - INFO - Orchestration Service Dummy started on 0.0.0.0:8112
+2026-02-22 22:08:52,438 - INFO - Listening for incoming HotcueEvent messages...
+2026-02-22 22:09:10,284 - INFO - Client connected from ('127.0.0.1', 31641)
+2026-02-22 22:09:10,285 - INFO - Received from ('127.0.0.1', 31641): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:09:10,285 - INFO - Client ('127.0.0.1', 31641) disconnected
+2026-02-22 22:09:10,285 - INFO - Connection with ('127.0.0.1', 31641) closed
+2026-02-22 22:09:33,308 - INFO - Client connected from ('127.0.0.1', 31664)
+2026-02-22 22:09:33,308 - INFO - Received from ('127.0.0.1', 31664): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:09:33,309 - INFO - Client ('127.0.0.1', 31664) disconnected
+2026-02-22 22:09:33,309 - INFO - Connection with ('127.0.0.1', 31664) closed
+2026-02-22 22:10:26,031 - INFO - Client connected from ('127.0.0.1', 31712)
+2026-02-22 22:10:26,032 - INFO - Received from ('127.0.0.1', 31712): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:10:26,032 - INFO - Client ('127.0.0.1', 31712) disconnected
+2026-02-22 22:10:26,032 - INFO - Connection with ('127.0.0.1', 31712) closed
+2026-02-22 22:10:29,370 - INFO - Client connected from ('127.0.0.1', 31716)
+2026-02-22 22:10:29,370 - INFO - Received from ('127.0.0.1', 31716): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:10:29,370 - INFO - Client ('127.0.0.1', 31716) disconnected
+2026-02-22 22:10:29,370 - INFO - Connection with ('127.0.0.1', 31716) closed
+2026-02-22 22:11:38,546 - INFO - Client connected from ('127.0.0.1', 13188)
+2026-02-22 22:11:38,546 - INFO - Received from ('127.0.0.1', 13188): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:11:38,547 - INFO - Client ('127.0.0.1', 13188) disconnected
+2026-02-22 22:11:38,547 - INFO - Connection with ('127.0.0.1', 13188) closed
+2026-02-22 22:11:48,858 - INFO - Client connected from ('127.0.0.1', 62478)
+2026-02-22 22:11:48,859 - INFO - Received from ('127.0.0.1', 62478): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:11:48,859 - INFO - Client ('127.0.0.1', 62478) disconnected
+2026-02-22 22:11:48,859 - INFO - Connection with ('127.0.0.1', 62478) closed
+2026-02-22 22:12:11,367 - INFO - Client connected from ('127.0.0.1', 62499)
+2026-02-22 22:12:11,368 - INFO - Received from ('127.0.0.1', 62499): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 5", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:12:11,368 - INFO - Client ('127.0.0.1', 62499) disconnected
+2026-02-22 22:12:11,368 - INFO - Connection with ('127.0.0.1', 62499) closed
+2026-02-22 22:12:16,818 - INFO - Client connected from ('127.0.0.1', 62504)
+2026-02-22 22:12:16,819 - INFO - Received from ('127.0.0.1', 62504): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 5", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:12:16,819 - INFO - Client ('127.0.0.1', 62504) disconnected
+2026-02-22 22:12:16,819 - INFO - Connection with ('127.0.0.1', 62504) closed
+2026-02-22 22:12:42,629 - INFO - Client connected from ('127.0.0.1', 62529)
+2026-02-22 22:12:42,630 - INFO - Received from ('127.0.0.1', 62529): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:12:42,630 - INFO - Client ('127.0.0.1', 62529) disconnected
+2026-02-22 22:12:42,630 - INFO - Connection with ('127.0.0.1', 62529) closed
+2026-02-22 22:12:52,558 - INFO - Client connected from ('127.0.0.1', 62537)
+2026-02-22 22:12:52,558 - INFO - Received from ('127.0.0.1', 62537): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 1", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:12:52,558 - INFO - Client ('127.0.0.1', 62537) disconnected
+2026-02-22 22:12:52,559 - INFO - Connection with ('127.0.0.1', 62537) closed
+2026-02-22 22:12:56,509 - INFO - Client connected from ('127.0.0.1', 62542)
+2026-02-22 22:12:56,509 - INFO - Received from ('127.0.0.1', 62542): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 2", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:12:56,510 - INFO - Client ('127.0.0.1', 62542) disconnected
+2026-02-22 22:12:56,510 - INFO - Connection with ('127.0.0.1', 62542) closed
+2026-02-22 22:13:01,049 - INFO - Client connected from ('127.0.0.1', 62546)
+2026-02-22 22:13:01,049 - INFO - Received from ('127.0.0.1', 62546): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 3", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:13:01,050 - INFO - Client ('127.0.0.1', 62546) disconnected
+2026-02-22 22:13:01,050 - INFO - Connection with ('127.0.0.1', 62546) closed
+2026-02-22 22:13:07,962 - INFO - Client connected from ('127.0.0.1', 62553)
+2026-02-22 22:13:07,962 - INFO - Received from ('127.0.0.1', 62553): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:13:07,962 - INFO - Client ('127.0.0.1', 62553) disconnected
+2026-02-22 22:13:07,962 - INFO - Connection with ('127.0.0.1', 62553) closed
+2026-02-22 22:13:12,548 - INFO - Client connected from ('127.0.0.1', 62556)
+2026-02-22 22:13:12,549 - INFO - Received from ('127.0.0.1', 62556): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 5", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:13:12,549 - INFO - Client ('127.0.0.1', 62556) disconnected
+2026-02-22 22:13:12,549 - INFO - Connection with ('127.0.0.1', 62556) closed
+2026-02-22 22:13:16,436 - INFO - Client connected from ('127.0.0.1', 62559)
+2026-02-22 22:13:16,436 - INFO - Received from ('127.0.0.1', 62559): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 6", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:13:16,437 - INFO - Client ('127.0.0.1', 62559) disconnected
+2026-02-22 22:13:16,437 - INFO - Connection with ('127.0.0.1', 62559) closed
+2026-02-22 22:13:20,363 - INFO - Client connected from ('127.0.0.1', 62562)
+2026-02-22 22:13:20,363 - INFO - Received from ('127.0.0.1', 62562): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 8", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:13:20,363 - INFO - Client ('127.0.0.1', 62562) disconnected
+2026-02-22 22:13:20,363 - INFO - Connection with ('127.0.0.1', 62562) closed
+2026-02-22 22:13:31,945 - INFO - Client connected from ('127.0.0.1', 62570)
+2026-02-22 22:13:31,945 - INFO - Received from ('127.0.0.1', 62570): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 7", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:13:31,945 - INFO - Client ('127.0.0.1', 62570) disconnected
+2026-02-22 22:13:31,946 - INFO - Connection with ('127.0.0.1', 62570) closed
+2026-02-22 22:13:43,981 - INFO - Client connected from ('127.0.0.1', 62587)
+2026-02-22 22:13:43,981 - INFO - Received from ('127.0.0.1', 62587): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:13:43,981 - INFO - Client ('127.0.0.1', 62587) disconnected
+2026-02-22 22:13:43,981 - INFO - Connection with ('127.0.0.1', 62587) closed
+2026-02-22 22:13:53,180 - INFO - Client connected from ('127.0.0.1', 62597)
+2026-02-22 22:13:53,180 - INFO - Received from ('127.0.0.1', 62597): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 1", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:13:53,180 - INFO - Client ('127.0.0.1', 62597) disconnected
+2026-02-22 22:13:53,180 - INFO - Connection with ('127.0.0.1', 62597) closed
+2026-02-22 22:14:03,427 - INFO - Client connected from ('127.0.0.1', 62608)
+2026-02-22 22:14:03,428 - INFO - Received from ('127.0.0.1', 62608): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 1", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:14:03,428 - INFO - Client ('127.0.0.1', 62608) disconnected
+2026-02-22 22:14:03,428 - INFO - Connection with ('127.0.0.1', 62608) closed
+2026-02-22 22:14:18,811 - INFO - Client connected from ('127.0.0.1', 62627)
+2026-02-22 22:14:18,811 - INFO - Received from ('127.0.0.1', 62627): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 2", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:14:18,811 - INFO - Client ('127.0.0.1', 62627) disconnected
+2026-02-22 22:14:18,811 - INFO - Connection with ('127.0.0.1', 62627) closed
+2026-02-22 22:14:49,541 - INFO - Client connected from ('127.0.0.1', 62668)
+2026-02-22 22:14:49,542 - INFO - Received from ('127.0.0.1', 62668): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 3", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:14:49,542 - INFO - Client ('127.0.0.1', 62668) disconnected
+2026-02-22 22:14:49,542 - INFO - Connection with ('127.0.0.1', 62668) closed
+2026-02-22 22:15:20,269 - INFO - Client connected from ('127.0.0.1', 62695)
+2026-02-22 22:15:20,269 - INFO - Received from ('127.0.0.1', 62695): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:15:20,269 - INFO - Client ('127.0.0.1', 62695) disconnected
+2026-02-22 22:15:20,269 - INFO - Connection with ('127.0.0.1', 62695) closed
+2026-02-22 22:15:50,971 - INFO - Client connected from ('127.0.0.1', 62735)
+2026-02-22 22:15:50,971 - INFO - Received from ('127.0.0.1', 62735): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 5", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:15:50,971 - INFO - Client ('127.0.0.1', 62735) disconnected
+2026-02-22 22:15:50,971 - INFO - Connection with ('127.0.0.1', 62735) closed
+2026-02-22 22:16:21,702 - INFO - Client connected from ('127.0.0.1', 62769)
+2026-02-22 22:16:21,702 - INFO - Received from ('127.0.0.1', 62769): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 6", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:16:21,702 - INFO - Client ('127.0.0.1', 62769) disconnected
+2026-02-22 22:16:21,702 - INFO - Connection with ('127.0.0.1', 62769) closed
+2026-02-22 22:16:52,438 - INFO - Client connected from ('127.0.0.1', 57378)
+2026-02-22 22:16:52,438 - INFO - Received from ('127.0.0.1', 57378): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 7", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:16:52,438 - INFO - Client ('127.0.0.1', 57378) disconnected
+2026-02-22 22:16:52,438 - INFO - Connection with ('127.0.0.1', 57378) closed
+2026-02-22 22:17:07,778 - INFO - Client connected from ('127.0.0.1', 57396)
+2026-02-22 22:17:07,778 - INFO - Received from ('127.0.0.1', 57396): {"CueColor": 8, "CueMatchType": "None", "CueName": "Cue 8", "Deck": 1, "HotCueType": "Hot_Cue"}
+2026-02-22 22:17:07,778 - INFO - Client ('127.0.0.1', 57396) disconnected
+2026-02-22 22:17:07,779 - INFO - Connection with ('127.0.0.1', 57396) closed
+2026-02-22 22:18:25,881 - INFO - Client connected from ('127.0.0.1', 3181)
+2026-02-22 22:18:25,882 - INFO - Received from ('127.0.0.1', 3181): {"CueColor": "#FF292E", "CueMatchType": "None", "CueName": "Cue 1", "Deck": 1, "HotCueType": "Hot_Cue", "meta": "Cue 1"}
+2026-02-22 22:18:25,882 - INFO - Client ('127.0.0.1', 3181) disconnected
+2026-02-22 22:18:25,882 - INFO - Connection with ('127.0.0.1', 3181) closed
+2026-02-22 22:18:27,566 - INFO - Client connected from ('127.0.0.1', 3183)
+2026-02-22 22:18:27,567 - INFO - Received from ('127.0.0.1', 3183): {"CueColor": "#DE713B", "CueMatchType": "None", "CueName": "Cue 2", "Deck": 1, "HotCueType": "Hot_Cue", "meta": "Cue 2"}
+2026-02-22 22:18:27,567 - INFO - Client ('127.0.0.1', 3183) disconnected
+2026-02-22 22:18:27,567 - INFO - Connection with ('127.0.0.1', 3183) closed
+2026-02-22 22:19:26,038 - INFO - Orchestration Service Dummy started on 0.0.0.0:8112
+2026-02-22 22:19:26,038 - INFO - Listening for incoming HotcueEvent messages...
+2026-02-22 22:19:29,364 - INFO - Client connected from ('127.0.0.1', 20937)
+2026-02-22 22:19:29,364 - INFO - Received from ('127.0.0.1', 20937): {"CueColor": "#FF292E", "CueMatchType": "None", "CueName": "Cue 1", "Deck": 1, "HotCueType": "Hot_Cue", "meta": "Cue 1"}
+2026-02-22 22:19:29,364 - INFO - Client ('127.0.0.1', 20937) disconnected
+2026-02-22 22:19:29,364 - INFO - Connection with ('127.0.0.1', 20937) closed
+2026-02-22 22:19:30,022 - INFO - Client connected from ('127.0.0.1', 20938)
+2026-02-22 22:19:30,022 - INFO - Received from ('127.0.0.1', 20938): {"CueColor": "#DE713B", "CueMatchType": "None", "CueName": "Cue 2", "Deck": 1, "HotCueType": "Hot_Cue", "meta": "Cue 2"}
+2026-02-22 22:19:30,023 - INFO - Client ('127.0.0.1', 20938) disconnected
+2026-02-22 22:19:30,023 - INFO - Connection with ('127.0.0.1', 20938) closed
+2026-02-22 22:19:30,687 - INFO - Client connected from ('127.0.0.1', 20941)
+2026-02-22 22:19:30,687 - INFO - Received from ('127.0.0.1', 20941): {"CueColor": "#008BF7", "CueMatchType": "None", "CueName": "Cue 3", "Deck": 1, "HotCueType": "Hot_Cue", "meta": "Cue 3"}
+2026-02-22 22:19:30,687 - INFO - Client ('127.0.0.1', 20941) disconnected
+2026-02-22 22:19:30,687 - INFO - Connection with ('127.0.0.1', 20941) closed
+2026-02-22 22:19:31,312 - INFO - Client connected from ('127.0.0.1', 20942)
+2026-02-22 22:19:31,313 - INFO - Received from ('127.0.0.1', 20942): {"CueColor": "#FAD83B", "CueMatchType": "None", "CueName": "Cue 4", "Deck": 1, "HotCueType": "Hot_Cue", "meta": "Cue 4"}
+2026-02-22 22:19:31,313 - INFO - Client ('127.0.0.1', 20942) disconnected
+2026-02-22 22:19:31,313 - INFO - Connection with ('127.0.0.1', 20942) closed
+2026-02-22 22:19:31,825 - INFO - Client connected from ('127.0.0.1', 20943)
+2026-02-22 22:19:31,825 - INFO - Received from ('127.0.0.1', 20943): {"CueColor": "green", "CueMatchType": "None", "CueName": "Cue 5", "Deck": 1, "HotCueType": "Hot_Cue", "meta": "Cue 5"}
+2026-02-22 22:19:31,825 - INFO - Client ('127.0.0.1', 20943) disconnected
+2026-02-22 22:19:31,825 - INFO - Connection with ('127.0.0.1', 20943) closed
+2026-02-22 22:19:32,339 - INFO - Client connected from ('127.0.0.1', 20945)
+2026-02-22 22:19:32,339 - INFO - Received from ('127.0.0.1', 20945): {"CueColor": "#FB40AA", "CueMatchType": "None", "CueName": "Cue 6", "Deck": 1, "HotCueType": "Hot_Cue", "meta": "Cue 6"}
+2026-02-22 22:19:32,339 - INFO - Client ('127.0.0.1', 20945) disconnected
+2026-02-22 22:19:32,340 - INFO - Connection with ('127.0.0.1', 20945) closed
+2026-02-22 22:19:33,111 - INFO - Client connected from ('127.0.0.1', 20947)
+2026-02-22 22:19:33,112 - INFO - Received from ('127.0.0.1', 20947): {"CueColor": "#40F9FB", "CueMatchType": "None", "CueName": "Cue 7", "Deck": 1, "HotCueType": "Hot_Cue", "meta": "Cue 7"}
+2026-02-22 22:19:33,112 - INFO - Client ('127.0.0.1', 20947) disconnected
+2026-02-22 22:19:33,112 - INFO - Connection with ('127.0.0.1', 20947) closed
+2026-02-22 22:19:33,735 - INFO - Client connected from ('127.0.0.1', 20949)
+2026-02-22 22:19:33,736 - INFO - Received from ('127.0.0.1', 20949): {"CueColor": "#BE78FF", "CueMatchType": "None", "CueName": "Cue 8", "Deck": 1, "HotCueType": "Hot_Cue", "meta": "Cue 8"}
+2026-02-22 22:19:33,736 - INFO - Client ('127.0.0.1', 20949) disconnected
+2026-02-22 22:19:33,736 - INFO - Connection with ('127.0.0.1', 20949) closed
+2026-02-22 22:32:10,220 - INFO - Shutting down...
+2026-02-22 22:32:10,220 - INFO - Server stopped
